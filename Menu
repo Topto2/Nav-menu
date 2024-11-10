@@ -1,0 +1,107 @@
+HTML
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Навигационное меню</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="#">Мой Сайт</a>
+            </div>
+            <button class="menu-toggle" id="mobile-menu">☰</button>
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+CSS
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+}
+
+.navbar .logo a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 15px;
+    transition: background 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+/* Мобильное меню */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    color: #fff;
+    background: none;
+    border: none;
+}
+
+/* Стили для мобильных устройств */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-links.active {
+        display: flex;
+        background-color: #333;
+        padding-top: 10px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links li {
+        text-align: center;
+        padding: 10px 0;
+    }
+}
+
+
+JS
+
+const mobileMenuButton = document.getElementById("mobile-menu");
+const navMenu = document.getElementById("nav-menu");
+
+mobileMenuButton.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+});
